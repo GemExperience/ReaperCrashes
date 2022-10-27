@@ -1,0 +1,998 @@
+-------------------------------------
+Translated Report (Full Report Below)
+-------------------------------------
+
+Process:               REAPER [2590]
+Path:                  /Applications/REAPER.app/Contents/MacOS/REAPER
+Identifier:            com.cockos.reaper
+Version:               6.69.0_38d5c94u (6.69.0_38d5c94u)
+Code Type:             X86-64 (Native)
+Parent Process:        launchd [1]
+User ID:               501
+
+Date/Time:             2022-10-27 23:12:32.6333 +0200
+OS Version:            macOS 12.6 (21G115)
+Report Version:        12
+Anonymous UUID:        666C2408-4415-84BA-42F7-778F44F251CE
+
+
+Time Awake Since Boot: 11000 seconds
+
+System Integrity Protection: disabled
+
+Crashed Thread:        62
+
+Exception Type:        EXC_BAD_ACCESS (SIGBUS)
+Exception Codes:       KERN_PROTECTION_FAILURE at 0x0000700007b00000
+Exception Codes:       0x0000000000000002, 0x0000700007b00000
+Exception Note:        EXC_CORPSE_NOTIFY
+
+Termination Reason:    Namespace SIGNAL, Code 10 Bus error: 10
+Terminating Process:   exc handler [2590]
+
+VM Region Info: 0x700007b00000 is in 0x700007b00000-0x700007b01000;  bytes after start: 0  bytes before end: 4095
+      REGION TYPE                    START - END         [ VSIZE] PRT/MAX SHRMOD  REGION DETAIL
+      Stack                    700007a7e000-700007b00000 [  520K] rw-/rwx SM=PRV  thread 62
+--->  STACK GUARD              700007b00000-700007b01000 [    4K] ---/rwx SM=NUL  ...for thread 63
+      Stack                    700007b01000-700007b83000 [  520K] rw-/rwx SM=PRV  thread 63
+
+Thread 0:: reaper Dispatch queue: com.apple.main-thread
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5dea6f _pthread_cond_wait + 1249
+2   libc++.1.dylib                	    0x7ff81c53cd02 std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&) + 18
+3   libc++.1.dylib                	    0x7ff81c53d5a1 std::__1::__assoc_sub_state::__sub_wait(std::__1::unique_lock<std::__1::mutex>&) + 45
+4   libc++.1.dylib                	    0x7ff81c53d60a std::__1::__assoc_sub_state::wait() + 46
+5   SoundID Reference Plugin      	       0x13a1988db 0x139e04000 + 3754203
+6   SoundID Reference Plugin      	       0x139e1be22 0x139e04000 + 97826
+7   SoundID Reference Plugin      	       0x139e12e52 0x139e04000 + 61010
+8   SoundID Reference Plugin      	       0x139e20533 0x139e04000 + 116019
+9   SoundID Reference Plugin      	       0x139e0ee3b 0x139e04000 + 44603
+10  AudioToolboxCore              	    0x7ff81dc6b6d2 AudioUnitInitialize + 100
+11  REAPER                        	       0x1085ec3c4 AU_Plugin::Initialize(bool) + 1396
+12  REAPER                        	       0x1085e9a99 AU_Plugin::AU_Plugin(void*, char const*, void*, int*, int) + 4297
+13  REAPER                        	       0x1084418f2 FxDsp::LoadState(char const*, ProjectStateContext*, bool, bool, char const*) + 5474
+14  REAPER                        	       0x108466490 FxChain::LoadState_internal(ProjectStateContext*, bool, int, bool, char const*) + 2144
+15  REAPER                        	       0x108460a16 FxChain::OnPaste(HWND__*, FxDsp*, bool) + 1014
+16  REAPER                        	       0x10830d32f MediaTrack::DoMixerFxMenu(HWND__*, POINT, int, int) + 4383
+17  REAPER                        	       0x10864a8a3 DoFXParmClick(HWND__*, long, MediaTrack*, bool, bool, WDL_VWnd*) + 995
+18  REAPER                        	       0x10830bed5 MediaTrack::OnTrackPanelRightClick(HWND__*, int, int, int) + 1381
+19  REAPER                        	       0x10865990f MCPDisplayProc(HWND__*, unsigned int, unsigned long, long) + 3295
+20  REAPER                        	       0x1085cb383 DefWindowProc(HWND__*, unsigned int, unsigned long, long) + 1459
+21  REAPER                        	       0x108659b89 MCPDisplayProc(HWND__*, unsigned int, unsigned long, long) + 3929
+22  REAPER                        	       0x1085a0a7c SWELL_SendMouseMessage(REAPERSwell_hwnd*, int, NSEvent*) + 668
+23  AppKit                        	    0x7ff81f24ed2e -[NSWindow(NSEventRouting) _reallySendEvent:isDelayedEvent:] + 2502
+24  AppKit                        	    0x7ff81f24e14e -[NSWindow(NSEventRouting) sendEvent:] + 352
+25  AppKit                        	    0x7ff81f24c524 -[NSApplication(NSEvent) sendEvent:] + 352
+26  REAPER                        	       0x1083ece7b -[REAPERapp sendEvent:] + 3499
+27  AppKit                        	    0x7ff81f50518b -[NSApplication _handleEvent:] + 65
+28  AppKit                        	    0x7ff81f0cdd3e -[NSApplication run] + 623
+29  AppKit                        	    0x7ff81f0a1c97 NSApplicationMain + 817
+30  dyld                          	       0x11812252e start + 462
+
+Thread 1:
+0   libsystem_pthread.dylib       	    0x7ff81c5d9f48 start_wqthread + 0
+
+Thread 2:: com.apple.NSEventThread
+0   libsystem_kernel.dylib        	    0x7ff81c5a197a mach_msg_trap + 10
+1   libsystem_kernel.dylib        	    0x7ff81c5a1ce8 mach_msg + 56
+2   CoreFoundation                	    0x7ff81c6a536d __CFRunLoopServiceMachPort + 319
+3   CoreFoundation                	    0x7ff81c6a39f8 __CFRunLoopRun + 1276
+4   CoreFoundation                	    0x7ff81c6a2e3c CFRunLoopRunSpecific + 562
+5   AppKit                        	    0x7ff81f24a9ce _NSEventThread + 132
+6   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+7   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 3:
+0   libsystem_pthread.dylib       	    0x7ff81c5d9f48 start_wqthread + 0
+
+Thread 4:
+0   libsystem_kernel.dylib        	    0x7ff81c5a197a mach_msg_trap + 10
+1   libsystem_kernel.dylib        	    0x7ff81c5a1ce8 mach_msg + 56
+2   CoreMIDI                      	    0x7ff83330f284 XServerMachPort::ReceiveMessage(int&, void*, int&) + 94
+3   CoreMIDI                      	    0x7ff83333f6a5 MIDIProcess::MIDIInPortThread::Run() + 105
+4   CoreMIDI                      	    0x7ff83332618e XThread::RunHelper(void*) + 10
+5   CoreMIDI                      	    0x7ff8333273b3 CAPThread::Entry(CAPThread*) + 77
+6   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+7   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 5:: */videomp
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   reaper_video.dylib            	       0x10f881d70 smp_thread(void*) + 161
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 6:: */videomp
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   reaper_video.dylib            	       0x10f881d70 smp_thread(void*) + 161
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 7:: */videomp
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   reaper_video.dylib            	       0x10f881d70 smp_thread(void*) + 161
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 8:: */videomp
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   reaper_video.dylib            	       0x10f881d70 smp_thread(void*) + 161
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 9:: */videomp
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   reaper_video.dylib            	       0x10f881d70 smp_thread(void*) + 161
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 10:: */videomp
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   reaper_video.dylib            	       0x10f881d70 smp_thread(void*) + 161
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 11:: */video
+0   libsystem_kernel.dylib        	    0x7ff81c5a42be __semwait_signal + 10
+1   libsystem_c.dylib             	    0x7ff81c4b8863 nanosleep + 196
+2   libsystem_c.dylib             	    0x7ff81c4b8799 usleep + 53
+3   reaper_video.dylib            	       0x10f877f30 videoDecodeThread(void*) + 476
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 12:: AMCP Logging Spool
+0   libsystem_kernel.dylib        	    0x7ff81c5a19b6 semaphore_wait_trap + 10
+1   caulk                         	    0x7ff8250de2e6 caulk::mach::semaphore::wait_or_error() + 16
+2   caulk                         	    0x7ff8250c6148 caulk::concurrent::details::worker_thread::run() + 36
+3   caulk                         	    0x7ff8250c5e0c void* caulk::thread_proxy<std::__1::tuple<caulk::thread::attributes, void (caulk::concurrent::details::worker_thread::*)(), std::__1::tuple<caulk::concurrent::details::worker_thread*> > >(void*) + 41
+4   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+5   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 13:: com.apple.audio.IOThread.client
+0   libsystem_kernel.dylib        	    0x7ff81c5a197a mach_msg_trap + 10
+1   libsystem_kernel.dylib        	    0x7ff81c5a1ce8 mach_msg + 56
+2   CoreAudio                     	    0x7ff81e224c07 HALB_MachPort::SendSimpleMessageWithSimpleReply(unsigned int, unsigned int, int, int&, bool, unsigned int) + 111
+3   CoreAudio                     	    0x7ff81e0af729 HALC_ProxyIOContext::IOWorkLoop() + 3931
+4   CoreAudio                     	    0x7ff81e0ae205 invocation function for block in HALC_ProxyIOContext::HALC_ProxyIOContext(unsigned int, unsigned int) + 63
+5   CoreAudio                     	    0x7ff81e27a616 HALB_IOThread::Entry(void*) + 72
+6   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+7   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 14:: */mediaafx
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   REAPER                        	       0x1081e583b WorkerThreadInst::threadProc(void*) + 1531
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 15:: */mediaafx
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   REAPER                        	       0x1081e583b WorkerThreadInst::threadProc(void*) + 1531
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 16:: */mediaafx
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   REAPER                        	       0x1081e583b WorkerThreadInst::threadProc(void*) + 1531
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 17:: */mediaafx
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   REAPER                        	       0x1081e583b WorkerThreadInst::threadProc(void*) + 1531
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 18:: */mediaafx
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   REAPER                        	       0x1081e583b WorkerThreadInst::threadProc(void*) + 1531
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 19:: */mediaafx
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   REAPER                        	       0x1081e583b WorkerThreadInst::threadProc(void*) + 1531
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 20:: */mediaafx
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   REAPER                        	       0x1081e583b WorkerThreadInst::threadProc(void*) + 1531
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 21:: */mediaafx
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   REAPER                        	       0x1081e583b WorkerThreadInst::threadProc(void*) + 1531
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 22:: */mediaafx
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   REAPER                        	       0x1081e583b WorkerThreadInst::threadProc(void*) + 1531
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 23:: */mediaafx
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   REAPER                        	       0x1081e583b WorkerThreadInst::threadProc(void*) + 1531
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 24:: */mediaafx
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   REAPER                        	       0x1081e583b WorkerThreadInst::threadProc(void*) + 1531
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 25:: */mediaafx
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   REAPER                        	       0x1081e583b WorkerThreadInst::threadProc(void*) + 1531
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 26:: */livefx
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   REAPER                        	       0x1081e5e4f WorkerThreadInst::threadProc(void*) + 3087
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 27:: */livefx
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   REAPER                        	       0x1081e5e4f WorkerThreadInst::threadProc(void*) + 3087
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 28:: */livefx
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   REAPER                        	       0x1081e5e4f WorkerThreadInst::threadProc(void*) + 3087
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 29:: */livefx
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   REAPER                        	       0x1081e5e4f WorkerThreadInst::threadProc(void*) + 3087
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 30:: */livefx
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   REAPER                        	       0x1081e5e4f WorkerThreadInst::threadProc(void*) + 3087
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 31:: */livefx
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   REAPER                        	       0x1081e5e4f WorkerThreadInst::threadProc(void*) + 3087
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 32:: */livefx
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   REAPER                        	       0x1081e5e4f WorkerThreadInst::threadProc(void*) + 3087
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 33:: */livefx
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   REAPER                        	       0x1081e5e4f WorkerThreadInst::threadProc(void*) + 3087
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 34:: */livefx
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   REAPER                        	       0x1081e5e4f WorkerThreadInst::threadProc(void*) + 3087
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 35:: */livefx
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   REAPER                        	       0x1081e5e4f WorkerThreadInst::threadProc(void*) + 3087
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 36:: */livefx
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5deaa4 _pthread_cond_wait + 1302
+2   REAPER                        	       0x1085d13a5 WaitForSingleObject(void*, unsigned int) + 741
+3   REAPER                        	       0x1081e5e4f WorkerThreadInst::threadProc(void*) + 3087
+4   REAPER                        	       0x1085d1579 __threadproc(void*) + 25
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 37:
+0   libsystem_pthread.dylib       	    0x7ff81c5d9f48 start_wqthread + 0
+
+Thread 38:
+0   libsystem_pthread.dylib       	    0x7ff81c5d9f48 start_wqthread + 0
+
+Thread 39:
+0   libsystem_kernel.dylib        	    0x7ff81c5a42be __semwait_signal + 10
+1   libsystem_c.dylib             	    0x7ff81c4b8863 nanosleep + 196
+2   libsystem_c.dylib             	    0x7ff81c4b8799 usleep + 53
+3   ReWire                        	       0x11c92c8f1 0x11c923000 + 39153
+4   ReWire                        	       0x11c96cf56 0x11c923000 + 302934
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 40:
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5dea6f _pthread_cond_wait + 1249
+2   libc++.1.dylib                	    0x7ff81c53cd02 std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&) + 18
+3   SoundID Reference Plugin      	       0x13a4310d6 ReferenceCore::Threading::EventQueue::threadProc() + 150
+4   SoundID Reference Plugin      	       0x13a43220e 0x139e04000 + 6480398
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 41:
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5dea6f _pthread_cond_wait + 1249
+2   libc++.1.dylib                	    0x7ff81c53cd02 std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&) + 18
+3   SoundID Reference Plugin      	       0x13a42fb76 ReferenceCore::TaskQueue::threadProc() + 134
+4   SoundID Reference Plugin      	       0x13a4309ce 0x139e04000 + 6474190
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 42:
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5dea6f _pthread_cond_wait + 1249
+2   libc++.1.dylib                	    0x7ff81c53cd02 std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&) + 18
+3   SoundID Reference Plugin      	       0x13a42fb76 ReferenceCore::TaskQueue::threadProc() + 134
+4   SoundID Reference Plugin      	       0x13a4309ce 0x139e04000 + 6474190
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 43:
+0   libsystem_kernel.dylib        	    0x7ff81c5a634e kevent + 10
+1   SoundID Reference Plugin      	       0x13a3cc92c ReferenceCore::KQueue::run() + 3084
+2   SoundID Reference Plugin      	       0x13a3cf31e 0x139e04000 + 6075166
+3   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+4   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 44:: AnalyticsService::StoreUndeliveredEventsRoutine
+0   libsystem_kernel.dylib        	    0x7ff81c5a634e kevent + 10
+1   SoundID Reference Plugin      	       0x13a3a5d01 0x139e04000 + 5905665
+2   SoundID Reference Plugin      	       0x13a4371d8 Sonarworks::Analytics::AnalyticsService::StoreUndeliveredEventsRoutine(Sonarworks::CAutoResetEvent&, Sonarworks::CManualResetEvent&) + 136
+3   SoundID Reference Plugin      	       0x13a44e16e Sonarworks::Posix::CThread<Sonarworks::Analytics::AnalyticsService>::ThreadProcedure(void*) + 126
+4   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+5   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 45:: AnalyticsService::DispatchAnalyticsEventsRoutine
+0   libsystem_kernel.dylib        	    0x7ff81c5a634e kevent + 10
+1   SoundID Reference Plugin      	       0x13a3a5d01 0x139e04000 + 5905665
+2   SoundID Reference Plugin      	       0x13a44341e Sonarworks::Analytics::AnalyticsService::DispatchAnalyticsEventsRoutine(Sonarworks::CAutoResetEvent&, Sonarworks::CManualResetEvent&) + 206
+3   SoundID Reference Plugin      	       0x13a44e16e Sonarworks::Posix::CThread<Sonarworks::Analytics::AnalyticsService>::ThreadProcedure(void*) + 126
+4   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+5   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 46:
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5dea6f _pthread_cond_wait + 1249
+2   libc++.1.dylib                	    0x7ff81c53cd93 std::__1::condition_variable::__do_timed_wait(std::__1::unique_lock<std::__1::mutex>&, std::__1::chrono::time_point<std::__1::chrono::system_clock, std::__1::chrono::duration<long long, std::__1::ratio<1l, 1000000000l> > >) + 93
+3   SoundID Reference Plugin      	       0x139f3fc7b 0x139e04000 + 1293435
+4   SoundID Reference Plugin      	       0x13a367325 0x139e04000 + 5649189
+5   SoundID Reference Plugin      	       0x13a36ae62 0x139e04000 + 5664354
+6   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+7   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 47:
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5dea6f _pthread_cond_wait + 1249
+2   libc++.1.dylib                	    0x7ff81c53cd02 std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&) + 18
+3   SoundID Reference Plugin      	       0x13a48bc5d Sonarworks::ThreadPool::loop() + 125
+4   SoundID Reference Plugin      	       0x13a48bf8e 0x139e04000 + 6848398
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 48:
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5dea6f _pthread_cond_wait + 1249
+2   libc++.1.dylib                	    0x7ff81c53cd02 std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&) + 18
+3   SoundID Reference Plugin      	       0x13a48bc5d Sonarworks::ThreadPool::loop() + 125
+4   SoundID Reference Plugin      	       0x13a48bf8e 0x139e04000 + 6848398
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 49:: JUCE Timer
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5dea6f _pthread_cond_wait + 1249
+2   libc++.1.dylib                	    0x7ff81c53cd93 std::__1::condition_variable::__do_timed_wait(std::__1::unique_lock<std::__1::mutex>&, std::__1::chrono::time_point<std::__1::chrono::system_clock, std::__1::chrono::duration<long long, std::__1::ratio<1l, 1000000000l> > >) + 93
+3   SoundID Reference Plugin      	       0x139f3fc7b 0x139e04000 + 1293435
+4   SoundID Reference Plugin      	       0x139ed9d86 0x139e04000 + 875910
+5   SoundID Reference Plugin      	       0x139f5c7af 0x139e04000 + 1410991
+6   SoundID Reference Plugin      	       0x139edaa53 0x139e04000 + 879187
+7   SoundID Reference Plugin      	       0x139f0a96a 0x139e04000 + 1075562
+8   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+9   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 50:
+0   libsystem_pthread.dylib       	    0x7ff81c5d9f48 start_wqthread + 0
+
+Thread 51:
+0   libsystem_pthread.dylib       	    0x7ff81c5d9f48 start_wqthread + 0
+
+Thread 52:
+0   libsystem_pthread.dylib       	    0x7ff81c5d9f48 start_wqthread + 0
+
+Thread 53:
+0   libsystem_pthread.dylib       	    0x7ff81c5d9f48 start_wqthread + 0
+
+Thread 54:
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5dea6f _pthread_cond_wait + 1249
+2   libc++.1.dylib                	    0x7ff81c53cd02 std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&) + 18
+3   libc++.1.dylib                	    0x7ff81c53d5a1 std::__1::__assoc_sub_state::__sub_wait(std::__1::unique_lock<std::__1::mutex>&) + 45
+4   SoundID Reference Plugin      	       0x13a4130c0 0x139e04000 + 6353088
+5   SoundID Reference Plugin      	       0x13a49853d Sonarworks::DSP::Configuration::ReferenceConfigurationBuilder::CalculatedResponses::buildActualCorrection(unsigned long, unsigned long) + 2605
+6   SoundID Reference Plugin      	       0x13a49b70b Sonarworks::DSP::Configuration::ReferenceConfigurationBuilder::buildPhaseAndActualCorrection(Sonarworks::DSP::Configuration::Configuration&, unsigned long, unsigned long, std::__1::vector<AFResponse, std::__1::allocator<AFResponse> >&, std::__1::vector<Sonarworks::DSP::Processor::AfrCorrectorConfiguration, std::__1::allocator<Sonarworks::DSP::Processor::AfrCorrectorConfiguration> >&) const + 235
+7   SoundID Reference Plugin      	       0x13a20b7ab 0x139e04000 + 4224939
+8   SoundID Reference Plugin      	       0x13a20b05c 0x139e04000 + 4223068
+9   SoundID Reference Plugin      	       0x13a218864 0x139e04000 + 4278372
+10  SoundID Reference Plugin      	       0x13a43122a ReferenceCore::Threading::EventQueue::threadProc() + 490
+11  SoundID Reference Plugin      	       0x13a43220e 0x139e04000 + 6480398
+12  libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+13  libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 55:
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5dea6f _pthread_cond_wait + 1249
+2   libc++.1.dylib                	    0x7ff81c53cd02 std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&) + 18
+3   SoundID Reference Plugin      	       0x13a42fb76 ReferenceCore::TaskQueue::threadProc() + 134
+4   SoundID Reference Plugin      	       0x13a4309ce 0x139e04000 + 6474190
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 56:
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5dea6f _pthread_cond_wait + 1249
+2   libc++.1.dylib                	    0x7ff81c53cd02 std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&) + 18
+3   SoundID Reference Plugin      	       0x13a42fb76 ReferenceCore::TaskQueue::threadProc() + 134
+4   SoundID Reference Plugin      	       0x13a4309ce 0x139e04000 + 6474190
+5   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+6   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 57:
+0   libsystem_kernel.dylib        	    0x7ff81c5a634e kevent + 10
+1   SoundID Reference Plugin      	       0x13a3cc92c ReferenceCore::KQueue::run() + 3084
+2   SoundID Reference Plugin      	       0x13a3cf31e 0x139e04000 + 6075166
+3   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+4   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 58:: AnalyticsService::StoreUndeliveredEventsRoutine
+0   libsystem_kernel.dylib        	    0x7ff81c5a634e kevent + 10
+1   SoundID Reference Plugin      	       0x13a3a5d01 0x139e04000 + 5905665
+2   SoundID Reference Plugin      	       0x13a4371d8 Sonarworks::Analytics::AnalyticsService::StoreUndeliveredEventsRoutine(Sonarworks::CAutoResetEvent&, Sonarworks::CManualResetEvent&) + 136
+3   SoundID Reference Plugin      	       0x13a44e16e Sonarworks::Posix::CThread<Sonarworks::Analytics::AnalyticsService>::ThreadProcedure(void*) + 126
+4   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+5   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 59:: AnalyticsService::DispatchAnalyticsEventsRoutine
+0   libsystem_kernel.dylib        	    0x7ff81c5a9d5a __select + 10
+1   libcurl.4.dylib               	    0x7ff830eb0ccf Curl_poll + 575
+2   libcurl.4.dylib               	    0x7ff830eab174 multi_wait + 759
+3   libcurl.4.dylib               	    0x7ff830eab2ef curl_multi_poll + 26
+4   libcurl.4.dylib               	    0x7ff830ea2453 curl_easy_perform + 285
+5   SoundID Reference Plugin      	       0x13a4b2d3e 0x139e04000 + 7007550
+6   SoundID Reference Plugin      	       0x13a44511c Sonarworks::Analytics::AnalyticsService::SendEvents(Sonarworks::Analytics::AnalyticsService::EventBatch const&) + 3132
+7   SoundID Reference Plugin      	       0x13a446133 0x139e04000 + 6562099
+8   SoundID Reference Plugin      	       0x13a443431 Sonarworks::Analytics::AnalyticsService::DispatchAnalyticsEventsRoutine(Sonarworks::CAutoResetEvent&, Sonarworks::CManualResetEvent&) + 225
+9   SoundID Reference Plugin      	       0x13a44e16e Sonarworks::Posix::CThread<Sonarworks::Analytics::AnalyticsService>::ThreadProcedure(void*) + 126
+10  libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+11  libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 60:
+0   libsystem_kernel.dylib        	    0x7ff81c5a43ea __psynch_cvwait + 10
+1   libsystem_pthread.dylib       	    0x7ff81c5dea6f _pthread_cond_wait + 1249
+2   libc++.1.dylib                	    0x7ff81c53cd93 std::__1::condition_variable::__do_timed_wait(std::__1::unique_lock<std::__1::mutex>&, std::__1::chrono::time_point<std::__1::chrono::system_clock, std::__1::chrono::duration<long long, std::__1::ratio<1l, 1000000000l> > >) + 93
+3   SoundID Reference Plugin      	       0x139f3fc7b 0x139e04000 + 1293435
+4   SoundID Reference Plugin      	       0x13a367325 0x139e04000 + 5649189
+5   SoundID Reference Plugin      	       0x13a36ae62 0x139e04000 + 5664354
+6   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+7   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 61:
+0   libsystem_kernel.dylib        	    0x7ff81c5a634e kevent + 10
+1   libsystem_info.dylib          	    0x7ff81c6042ee _mdns_search_ex + 1217
+2   libsystem_info.dylib          	    0x7ff81c606c1c mdns_addrinfo + 483
+3   libsystem_info.dylib          	    0x7ff81c6069e4 search_addrinfo + 164
+4   libsystem_info.dylib          	    0x7ff81c5ff659 si_addrinfo + 1811
+5   libsystem_info.dylib          	    0x7ff81c5feeac getaddrinfo + 176
+6   libcurl.4.dylib               	    0x7ff830eb4017 Curl_getaddrinfo_ex + 36
+7   libcurl.4.dylib               	    0x7ff830ec2f5d getaddrinfo_thread + 83
+8   libcurl.4.dylib               	    0x7ff830ebc7d8 curl_thread_create_thunk + 29
+9   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+10  libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 62 Crashed:
+0   SoundID Reference Plugin      	       0x13a46af96 FIRCoefficients::FIRCoefficients(AFResponse const&, unsigned long, unsigned long, int) + 1190
+1   SoundID Reference Plugin      	       0x13a49d01a 0x139e04000 + 6918170
+2   SoundID Reference Plugin      	       0x13a49cef0 0x139e04000 + 6917872
+3   SoundID Reference Plugin      	       0x13a49d16e 0x139e04000 + 6918510
+4   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+5   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+Thread 63:
+0   SoundID Reference Plugin      	       0x13a46ac00 FIRCoefficients::FIRCoefficients(AFResponse const&, unsigned long, unsigned long, int) + 272
+1   SoundID Reference Plugin      	       0x13a49d01a 0x139e04000 + 6918170
+2   SoundID Reference Plugin      	       0x13a49cef0 0x139e04000 + 6917872
+3   SoundID Reference Plugin      	       0x13a49d16e 0x139e04000 + 6918510
+4   libsystem_pthread.dylib       	    0x7ff81c5de4e1 _pthread_start + 125
+5   libsystem_pthread.dylib       	    0x7ff81c5d9f6b thread_start + 15
+
+
+Thread 62 crashed with X86 Thread State (64-bit):
+  rax: 0x00007fd277b1a000  rbx: 0x00007fd277a75000  rcx: 0x000000000000880c  rdx: 0x0000000000008440
+  rdi: 0xffffffffffffff0e  rsi: 0x0000000000002203  rbp: 0x0000700007afdec0  rsp: 0x0000700007abddd0
+   r8: 0x0000000000000001   r9: 0xbfa185a10a4109cf  r10: 0x0000000000000080  r11: 0x000000000000003f
+  r12: 0x00007fd277a75000  r13: 0x0000000000000000  r14: 0x00007fd277a75000  r15: 0x000000000000880d
+  rip: 0x000000013a46af96  rfl: 0x0000000000010282  cr2: 0x0000700007b00000
+  
+Logical CPU:     0
+Error Code:      0x00000004 (no mapping for user data read)
+Trap Number:     14
+
+Thread 62 instruction stream:
+  48 ff c6 48 85 d2 4c 8b-6d a0 0f 84 ca 01 00 00  H..H..L.m.......
+  48 89 f7 48 83 e7 fe 48-f7 df 31 d2 66 0f 28 05  H..H...H..1.f.(.
+  16 79 26 00 66 0f 1f 44-00 00 66 0f 10 8c d5 10  .y&.f..D..f.....
+  ff fb ff 66 0f 10 94 d5-20 ff fb ff 66 0f 59 c8  ...f.... ...f.Y.
+  66 0f 59 d0 66 0f 5a c9-66 0f 5a d2 66 0f 13 0c  f.Y.f.Z.f.Z.f...
+  90 66 0f 13 54 90 08 66-0f 10 8c d5 30 ff fb ff  .f..T..f....0...
+ [66]0f 10 94 d5 40 ff fb-ff 66 0f 59 c8 66 0f 59  f....@...f.Y.f.Y	<==
+  d0 66 0f 5a c9 66 0f 5a-d2 66 0f 13 4c 90 10 66  .f.Z.f.Z.f..L..f
+  0f 13 54 90 18 48 83 c2-08 48 83 c7 02 75 9b 40  ..T..H...H...u.@
+  f6 c6 01 74 35 66 0f 10-84 d5 10 ff fb ff 66 0f  ...t5f........f.
+  10 8c d5 20 ff fb ff 66-0f 28 15 8b 78 26 00 66  ... ...f.(..x&.f
+  0f 59 c2 66 0f 59 ca 66-0f 5a c0 66 0f 5a c9 66  .Y.f.Y.f.Z.f.Z.f
+
+Binary Images:
+    0x7ff81c5a0000 -     0x7ff81c5d7fff libsystem_kernel.dylib (*) <8cc28466-fd2f-3c80-9834-9525b7beac19> /usr/lib/system/libsystem_kernel.dylib
+    0x7ff81c5d8000 -     0x7ff81c5e3fff libsystem_pthread.dylib (*) <b5454e27-e8c7-3fdb-b77f-714f1e82e70b> /usr/lib/system/libsystem_pthread.dylib
+    0x7ff81c531000 -     0x7ff81c589fff libc++.1.dylib (*) <e67ac91f-f1dc-30ec-84f3-83f5bdad3434> /usr/lib/libc++.1.dylib
+       0x139e04000 -        0x13abebfff com.sonarworks.soundid.reference.plugin (5.5.0) <771c2034-67cd-3ad0-a9ee-a82760f73b3b> /Library/Audio/Plug-Ins/Components/SoundID Reference AU Plugin.component/Contents/MacOS/SoundID Reference Plugin
+    0x7ff81da78000 -     0x7ff81dd08fff com.apple.audio.AudioToolboxCore (1.0) <d935453a-9986-311a-aa57-cd7584cbbcf9> /System/Library/PrivateFrameworks/AudioToolboxCore.framework/Versions/A/AudioToolboxCore
+       0x1080b2000 -        0x1089e1fff com.cockos.reaper (6.69.0_38d5c94u) <5e3c09a5-53a6-392c-a25c-7edfe8158518> /Applications/REAPER.app/Contents/MacOS/REAPER
+    0x7ff81f09e000 -     0x7ff81ff2dfff com.apple.AppKit (6.9) <06015263-62ac-3b08-a298-dc835c18452a> /System/Library/Frameworks/AppKit.framework/Versions/C/AppKit
+       0x11811d000 -        0x118188fff dyld (*) <71febccd-d9dc-3599-9971-2b3407c588a8> /usr/lib/dyld
+    0x7ff81c625000 -     0x7ff81cb27fff com.apple.CoreFoundation (6.9) <93c48919-68af-367e-9a67-db4159bc962c> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation
+    0x7ff8332fd000 -     0x7ff833369fff com.apple.audio.midi.CoreMIDI (2.0) <c517ae1a-8f49-3ad3-bdad-502c51ad2bf3> /System/Library/Frameworks/CoreMIDI.framework/Versions/A/CoreMIDI
+       0x10f859000 -        0x10f93cfff reaper_video.dylib (*) <e510ff75-1461-30fb-9cc0-d8c465056f0d> /Applications/REAPER.app/Contents/Plugins/reaper_video.dylib
+    0x7ff81c4a8000 -     0x7ff81c530fff libsystem_c.dylib (*) <e42e9d7a-03b4-340b-b61e-dcd45fd4acc0> /usr/lib/system/libsystem_c.dylib
+    0x7ff8250c4000 -     0x7ff8250e5fff com.apple.audio.caulk (1.0) <8e7b3d95-1d47-3f17-9512-c5fcc30792c2> /System/Library/PrivateFrameworks/caulk.framework/Versions/A/caulk
+    0x7ff81def5000 -     0x7ff81e62afff com.apple.audio.CoreAudio (5.0) <9be547d0-0af1-3470-afde-2ac4cd34441e> /System/Library/Frameworks/CoreAudio.framework/Versions/A/CoreAudio
+       0x11c923000 -        0x11c98efff se.propellerheads.rewire.library (1.8.7 build 145) <b284579f-660f-3550-8327-64dbedc9a218> /Library/Application Support/Propellerhead Software/*/ReWire.bundle/Contents/MacOS/ReWire
+    0x7ff830e80000 -     0x7ff830eedfff libcurl.4.dylib (*) <756c2541-68b2-344c-ade7-df50840d63e0> /usr/lib/libcurl.4.dylib
+    0x7ff81c5fa000 -     0x7ff81c624fff libsystem_info.dylib (*) <6d4b0da7-8efc-3e6d-b984-f49260c3c194> /usr/lib/system/libsystem_info.dylib
+               0x0 - 0xffffffffffffffff ??? (*) <00000000-0000-0000-0000-000000000000> ???
+
+External Modification Summary:
+  Calls made by other processes targeting this process:
+    task_for_pid: 0
+    thread_create: 0
+    thread_set_state: 0
+  Calls made by this process:
+    task_for_pid: 0
+    thread_create: 0
+    thread_set_state: 0
+  Calls made by all processes on this machine:
+    task_for_pid: 0
+    thread_create: 0
+    thread_set_state: 0
+
+VM Region Summary:
+ReadOnly portion of Libraries: Total=1.2G resident=0K(0%) swapped_out_or_unallocated=1.2G(100%)
+Writable regions: Total=3.5G written=0K(0%) resident=0K(0%) swapped_out=0K(0%) unallocated=3.5G(100%)
+
+                                VIRTUAL   REGION 
+REGION TYPE                        SIZE    COUNT (non-coalesced) 
+===========                     =======  ======= 
+Accelerate framework              1408K       11 
+Activity Tracing                   256K        1 
+CG backing stores                 3600K        8 
+CG image                          2816K       42 
+ColorSync                          232K       28 
+CoreAnimation                    300.6M      187 
+CoreGraphics                        16K        3 
+CoreImage                           12K        3 
+CoreUI image data                 5072K       38 
+Foundation                          44K        2 
+Image IO                            28K        7 
+Kernel Alloc Once                    8K        1 
+MALLOC                             2.9G     3999 
+MALLOC guard page                   48K       11 
+MALLOC_LARGE (reserved)           49.6M        5         reserved VM address space (unallocated)
+MALLOC_NANO (reserved)           256.0M        1         reserved VM address space (unallocated)
+ObjC additional data                15K        1 
+SQLite page cache                  192K        3 
+STACK GUARD                       56.2M       64 
+Stack                             40.0M       65 
+VM_ALLOCATE                       40.1M      686 
+VM_ALLOCATE (reserved)             456K        4         reserved VM address space (unallocated)
+__CTF                               756        1 
+__DATA                            42.9M      593 
+__DATA_CONST                      30.2M      336 
+__DATA_DIRTY                      1600K      209 
+__FONT_DATA                          4K        1 
+__LINKEDIT                       655.0M       78 
+__TEXT                           568.3M      593 
+__UNICODE                          592K        1 
+dyld private memory               1024K        1 
+libnetwork                        1024K        8 
+mapped file                      199.7M       44 
+shared memory                      792K       19 
+===========                     =======  ======= 
+TOTAL                              5.1G     7054 
+TOTAL, minus reserved VM space     4.8G     7054 
+
+
+
+-----------
+Full Report
+-----------
+
+{"app_name":"REAPER","timestamp":"2022-10-27 23:12:41.00 +0200","app_version":"6.69.0_38d5c94u","slice_uuid":"5e3c09a5-53a6-392c-a25c-7edfe8158518","build_version":"6.69.0_38d5c94u","platform":1,"bundleID":"com.cockos.reaper","share_with_app_devs":0,"is_first_party":0,"bug_type":"309","os_version":"macOS 12.6 (21G115)","incident_id":"E507D5F3-2DDC-480F-81DD-C9FB8FA567E8","name":"REAPER"}
+{
+  "uptime" : 11000,
+  "procLaunch" : "2022-10-27 23:09:43.4154 +0200",
+  "procRole" : "Foreground",
+  "version" : 2,
+  "userID" : 501,
+  "deployVersion" : 210,
+  "modelCode" : "iMacPro1,1",
+  "procStartAbsTime" : 11391573527972,
+  "coalitionID" : 447,
+  "osVersion" : {
+    "train" : "macOS 12.6",
+    "build" : "21G115",
+    "releaseType" : "User"
+  },
+  "captureTime" : "2022-10-27 23:12:32.6333 +0200",
+  "incident" : "E507D5F3-2DDC-480F-81DD-C9FB8FA567E8",
+  "bug_type" : "309",
+  "pid" : 2590,
+  "procExitAbsTime" : 11560782177026,
+  "cpuType" : "X86-64",
+  "procName" : "REAPER",
+  "procPath" : "\/Applications\/REAPER.app\/Contents\/MacOS\/REAPER",
+  "bundleInfo" : {"CFBundleShortVersionString":"6.69.0_38d5c94u","CFBundleVersion":"6.69.0_38d5c94u","CFBundleIdentifier":"com.cockos.reaper"},
+  "storeInfo" : {"deviceIdentifierForVendor":"4B8A2E8D-1188-5423-9890-E7BAC9D7ABB6","thirdParty":true},
+  "parentProc" : "launchd",
+  "parentPid" : 1,
+  "coalitionName" : "com.cockos.reaper",
+  "crashReporterKey" : "666C2408-4415-84BA-42F7-778F44F251CE",
+  "sip" : "disabled",
+  "vmRegionInfo" : "0x700007b00000 is in 0x700007b00000-0x700007b01000;  bytes after start: 0  bytes before end: 4095\n      REGION TYPE                    START - END         [ VSIZE] PRT\/MAX SHRMOD  REGION DETAIL\n      Stack                    700007a7e000-700007b00000 [  520K] rw-\/rwx SM=PRV  thread 62\n--->  STACK GUARD              700007b00000-700007b01000 [    4K] ---\/rwx SM=NUL  ...for thread 63\n      Stack                    700007b01000-700007b83000 [  520K] rw-\/rwx SM=PRV  thread 63",
+  "isCorpse" : 1,
+  "exception" : {"codes":"0x0000000000000002, 0x0000700007b00000","rawCodes":[2,123145431285760],"type":"EXC_BAD_ACCESS","signal":"SIGBUS","subtype":"KERN_PROTECTION_FAILURE at 0x0000700007b00000"},
+  "termination" : {"flags":0,"code":10,"namespace":"SIGNAL","indicator":"Bus error: 10","byProc":"exc handler","byPid":2590},
+  "vmregioninfo" : "0x700007b00000 is in 0x700007b00000-0x700007b01000;  bytes after start: 0  bytes before end: 4095\n      REGION TYPE                    START - END         [ VSIZE] PRT\/MAX SHRMOD  REGION DETAIL\n      Stack                    700007a7e000-700007b00000 [  520K] rw-\/rwx SM=PRV  thread 62\n--->  STACK GUARD              700007b00000-700007b01000 [    4K] ---\/rwx SM=NUL  ...for thread 63\n      Stack                    700007b01000-700007b83000 [  520K] rw-\/rwx SM=PRV  thread 63",
+  "extMods" : {"caller":{"thread_create":0,"thread_set_state":0,"task_for_pid":0},"system":{"thread_create":0,"thread_set_state":0,"task_for_pid":0},"targeted":{"thread_create":0,"thread_set_state":0,"task_for_pid":0},"warnings":0},
+  "faultingThread" : 62,
+  "threads" : [{"id":140103,"name":"reaper","queue":"com.apple.main-thread","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27247,"symbol":"_pthread_cond_wait","symbolLocation":1249,"imageIndex":1},{"imageOffset":48386,"symbol":"std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&)","symbolLocation":18,"imageIndex":2},{"imageOffset":50593,"symbol":"std::__1::__assoc_sub_state::__sub_wait(std::__1::unique_lock<std::__1::mutex>&)","symbolLocation":45,"imageIndex":2},{"imageOffset":50698,"symbol":"std::__1::__assoc_sub_state::wait()","symbolLocation":46,"imageIndex":2},{"imageOffset":3754203,"imageIndex":3},{"imageOffset":97826,"imageIndex":3},{"imageOffset":61010,"imageIndex":3},{"imageOffset":116019,"imageIndex":3},{"imageOffset":44603,"imageIndex":3},{"imageOffset":2045650,"symbol":"AudioUnitInitialize","symbolLocation":100,"imageIndex":4},{"imageOffset":5481412,"symbol":"AU_Plugin::Initialize(bool)","symbolLocation":1396,"imageIndex":5},{"imageOffset":5470873,"symbol":"AU_Plugin::AU_Plugin(void*, char const*, void*, int*, int)","symbolLocation":4297,"imageIndex":5},{"imageOffset":3733746,"symbol":"FxDsp::LoadState(char const*, ProjectStateContext*, bool, bool, char const*)","symbolLocation":5474,"imageIndex":5},{"imageOffset":3884176,"symbol":"FxChain::LoadState_internal(ProjectStateContext*, bool, int, bool, char const*)","symbolLocation":2144,"imageIndex":5},{"imageOffset":3861014,"symbol":"FxChain::OnPaste(HWND__*, FxDsp*, bool)","symbolLocation":1014,"imageIndex":5},{"imageOffset":2470703,"symbol":"MediaTrack::DoMixerFxMenu(HWND__*, POINT, int, int)","symbolLocation":4383,"imageIndex":5},{"imageOffset":5867683,"symbol":"DoFXParmClick(HWND__*, long, MediaTrack*, bool, bool, WDL_VWnd*)","symbolLocation":995,"imageIndex":5},{"imageOffset":2465493,"symbol":"MediaTrack::OnTrackPanelRightClick(HWND__*, int, int, int)","symbolLocation":1381,"imageIndex":5},{"imageOffset":5929231,"symbol":"MCPDisplayProc(HWND__*, unsigned int, unsigned long, long)","symbolLocation":3295,"imageIndex":5},{"imageOffset":5346179,"symbol":"DefWindowProc(HWND__*, unsigned int, unsigned long, long)","symbolLocation":1459,"imageIndex":5},{"imageOffset":5929865,"symbol":"MCPDisplayProc(HWND__*, unsigned int, unsigned long, long)","symbolLocation":3929,"imageIndex":5},{"imageOffset":5171836,"symbol":"SWELL_SendMouseMessage(REAPERSwell_hwnd*, int, NSEvent*)","symbolLocation":668,"imageIndex":5},{"imageOffset":1772846,"symbol":"-[NSWindow(NSEventRouting) _reallySendEvent:isDelayedEvent:]","symbolLocation":2502,"imageIndex":6},{"imageOffset":1769806,"symbol":"-[NSWindow(NSEventRouting) sendEvent:]","symbolLocation":352,"imageIndex":6},{"imageOffset":1762596,"symbol":"-[NSApplication(NSEvent) sendEvent:]","symbolLocation":352,"imageIndex":6},{"imageOffset":3387003,"symbol":"-[REAPERapp sendEvent:]","symbolLocation":3499,"imageIndex":5},{"imageOffset":4616587,"symbol":"-[NSApplication _handleEvent:]","symbolLocation":65,"imageIndex":6},{"imageOffset":195902,"symbol":"-[NSApplication run]","symbolLocation":623,"imageIndex":6},{"imageOffset":15511,"symbol":"NSApplicationMain","symbolLocation":817,"imageIndex":6},{"imageOffset":21806,"symbol":"start","symbolLocation":462,"imageIndex":7}]},{"id":140121,"frames":[{"imageOffset":8008,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":1}]},{"id":140205,"name":"com.apple.NSEventThread","frames":[{"imageOffset":6522,"symbol":"mach_msg_trap","symbolLocation":10,"imageIndex":0},{"imageOffset":7400,"symbol":"mach_msg","symbolLocation":56,"imageIndex":0},{"imageOffset":525165,"symbol":"__CFRunLoopServiceMachPort","symbolLocation":319,"imageIndex":8},{"imageOffset":518648,"symbol":"__CFRunLoopRun","symbolLocation":1276,"imageIndex":8},{"imageOffset":515644,"symbol":"CFRunLoopRunSpecific","symbolLocation":562,"imageIndex":8},{"imageOffset":1755598,"symbol":"_NSEventThread","symbolLocation":132,"imageIndex":6},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140208,"frames":[{"imageOffset":8008,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":1}]},{"id":140308,"frames":[{"imageOffset":6522,"symbol":"mach_msg_trap","symbolLocation":10,"imageIndex":0},{"imageOffset":7400,"symbol":"mach_msg","symbolLocation":56,"imageIndex":0},{"imageOffset":74372,"symbol":"XServerMachPort::ReceiveMessage(int&, void*, int&)","symbolLocation":94,"imageIndex":9},{"imageOffset":272037,"symbol":"MIDIProcess::MIDIInPortThread::Run()","symbolLocation":105,"imageIndex":9},{"imageOffset":168334,"symbol":"XThread::RunHelper(void*)","symbolLocation":10,"imageIndex":9},{"imageOffset":172979,"symbol":"CAPThread::Entry(CAPThread*)","symbolLocation":77,"imageIndex":9},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140311,"name":"*\/videomp","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":167280,"symbol":"smp_thread(void*)","symbolLocation":161,"imageIndex":10},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140312,"name":"*\/videomp","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":167280,"symbol":"smp_thread(void*)","symbolLocation":161,"imageIndex":10},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140313,"name":"*\/videomp","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":167280,"symbol":"smp_thread(void*)","symbolLocation":161,"imageIndex":10},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140314,"name":"*\/videomp","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":167280,"symbol":"smp_thread(void*)","symbolLocation":161,"imageIndex":10},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140315,"name":"*\/videomp","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":167280,"symbol":"smp_thread(void*)","symbolLocation":161,"imageIndex":10},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140316,"name":"*\/videomp","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":167280,"symbol":"smp_thread(void*)","symbolLocation":161,"imageIndex":10},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140317,"name":"*\/video","frames":[{"imageOffset":17086,"symbol":"__semwait_signal","symbolLocation":10,"imageIndex":0},{"imageOffset":67683,"symbol":"nanosleep","symbolLocation":196,"imageIndex":11},{"imageOffset":67481,"symbol":"usleep","symbolLocation":53,"imageIndex":11},{"imageOffset":126768,"symbol":"videoDecodeThread(void*)","symbolLocation":476,"imageIndex":10},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140323,"name":"AMCP Logging Spool","frames":[{"imageOffset":6582,"symbol":"semaphore_wait_trap","symbolLocation":10,"imageIndex":0},{"imageOffset":107238,"symbol":"caulk::mach::semaphore::wait_or_error()","symbolLocation":16,"imageIndex":12},{"imageOffset":8520,"symbol":"caulk::concurrent::details::worker_thread::run()","symbolLocation":36,"imageIndex":12},{"imageOffset":7692,"symbol":"void* caulk::thread_proxy<std::__1::tuple<caulk::thread::attributes, void (caulk::concurrent::details::worker_thread::*)(), std::__1::tuple<caulk::concurrent::details::worker_thread*> > >(void*)","symbolLocation":41,"imageIndex":12},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140355,"name":"com.apple.audio.IOThread.client","frames":[{"imageOffset":6522,"symbol":"mach_msg_trap","symbolLocation":10,"imageIndex":0},{"imageOffset":7400,"symbol":"mach_msg","symbolLocation":56,"imageIndex":0},{"imageOffset":3341319,"symbol":"HALB_MachPort::SendSimpleMessageWithSimpleReply(unsigned int, unsigned int, int, int&, bool, unsigned int)","symbolLocation":111,"imageIndex":13},{"imageOffset":1812265,"symbol":"HALC_ProxyIOContext::IOWorkLoop()","symbolLocation":3931,"imageIndex":13},{"imageOffset":1806853,"symbol":"invocation function for block in HALC_ProxyIOContext::HALC_ProxyIOContext(unsigned int, unsigned int)","symbolLocation":63,"imageIndex":13},{"imageOffset":3692054,"symbol":"HALB_IOThread::Entry(void*)","symbolLocation":72,"imageIndex":13},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140374,"name":"*\/mediaafx","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":1259579,"symbol":"WorkerThreadInst::threadProc(void*)","symbolLocation":1531,"imageIndex":5},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140375,"name":"*\/mediaafx","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":1259579,"symbol":"WorkerThreadInst::threadProc(void*)","symbolLocation":1531,"imageIndex":5},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140376,"name":"*\/mediaafx","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":1259579,"symbol":"WorkerThreadInst::threadProc(void*)","symbolLocation":1531,"imageIndex":5},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140377,"name":"*\/mediaafx","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":1259579,"symbol":"WorkerThreadInst::threadProc(void*)","symbolLocation":1531,"imageIndex":5},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140378,"name":"*\/mediaafx","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":1259579,"symbol":"WorkerThreadInst::threadProc(void*)","symbolLocation":1531,"imageIndex":5},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140379,"name":"*\/mediaafx","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":1259579,"symbol":"WorkerThreadInst::threadProc(void*)","symbolLocation":1531,"imageIndex":5},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140380,"name":"*\/mediaafx","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":1259579,"symbol":"WorkerThreadInst::threadProc(void*)","symbolLocation":1531,"imageIndex":5},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140381,"name":"*\/mediaafx","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":1259579,"symbol":"WorkerThreadInst::threadProc(void*)","symbolLocation":1531,"imageIndex":5},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140382,"name":"*\/mediaafx","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":1259579,"symbol":"WorkerThreadInst::threadProc(void*)","symbolLocation":1531,"imageIndex":5},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140383,"name":"*\/mediaafx","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":1259579,"symbol":"WorkerThreadInst::threadProc(void*)","symbolLocation":1531,"imageIndex":5},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140384,"name":"*\/mediaafx","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":1259579,"symbol":"WorkerThreadInst::threadProc(void*)","symbolLocation":1531,"imageIndex":5},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140385,"name":"*\/mediaafx","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":1259579,"symbol":"WorkerThreadInst::threadProc(void*)","symbolLocation":1531,"imageIndex":5},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140386,"name":"*\/livefx","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":1261135,"symbol":"WorkerThreadInst::threadProc(void*)","symbolLocation":3087,"imageIndex":5},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140387,"name":"*\/livefx","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":1261135,"symbol":"WorkerThreadInst::threadProc(void*)","symbolLocation":3087,"imageIndex":5},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140388,"name":"*\/livefx","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":1261135,"symbol":"WorkerThreadInst::threadProc(void*)","symbolLocation":3087,"imageIndex":5},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140389,"name":"*\/livefx","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":1261135,"symbol":"WorkerThreadInst::threadProc(void*)","symbolLocation":3087,"imageIndex":5},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140390,"name":"*\/livefx","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":1261135,"symbol":"WorkerThreadInst::threadProc(void*)","symbolLocation":3087,"imageIndex":5},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140391,"name":"*\/livefx","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":1261135,"symbol":"WorkerThreadInst::threadProc(void*)","symbolLocation":3087,"imageIndex":5},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140392,"name":"*\/livefx","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":1261135,"symbol":"WorkerThreadInst::threadProc(void*)","symbolLocation":3087,"imageIndex":5},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140393,"name":"*\/livefx","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":1261135,"symbol":"WorkerThreadInst::threadProc(void*)","symbolLocation":3087,"imageIndex":5},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140394,"name":"*\/livefx","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":1261135,"symbol":"WorkerThreadInst::threadProc(void*)","symbolLocation":3087,"imageIndex":5},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140395,"name":"*\/livefx","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":1261135,"symbol":"WorkerThreadInst::threadProc(void*)","symbolLocation":3087,"imageIndex":5},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140396,"name":"*\/livefx","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27300,"symbol":"_pthread_cond_wait","symbolLocation":1302,"imageIndex":1},{"imageOffset":5370789,"symbol":"WaitForSingleObject(void*, unsigned int)","symbolLocation":741,"imageIndex":5},{"imageOffset":1261135,"symbol":"WorkerThreadInst::threadProc(void*)","symbolLocation":3087,"imageIndex":5},{"imageOffset":5371257,"symbol":"__threadproc(void*)","symbolLocation":25,"imageIndex":5},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140483,"frames":[{"imageOffset":8008,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":1}]},{"id":140777,"frames":[{"imageOffset":8008,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":1}]},{"id":140790,"frames":[{"imageOffset":17086,"symbol":"__semwait_signal","symbolLocation":10,"imageIndex":0},{"imageOffset":67683,"symbol":"nanosleep","symbolLocation":196,"imageIndex":11},{"imageOffset":67481,"symbol":"usleep","symbolLocation":53,"imageIndex":11},{"imageOffset":39153,"imageIndex":14},{"imageOffset":302934,"imageIndex":14},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140906,"frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27247,"symbol":"_pthread_cond_wait","symbolLocation":1249,"imageIndex":1},{"imageOffset":48386,"symbol":"std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&)","symbolLocation":18,"imageIndex":2},{"imageOffset":6475990,"symbol":"ReferenceCore::Threading::EventQueue::threadProc()","symbolLocation":150,"imageIndex":3},{"imageOffset":6480398,"imageIndex":3},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140907,"frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27247,"symbol":"_pthread_cond_wait","symbolLocation":1249,"imageIndex":1},{"imageOffset":48386,"symbol":"std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&)","symbolLocation":18,"imageIndex":2},{"imageOffset":6470518,"symbol":"ReferenceCore::TaskQueue::threadProc()","symbolLocation":134,"imageIndex":3},{"imageOffset":6474190,"imageIndex":3},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140908,"frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27247,"symbol":"_pthread_cond_wait","symbolLocation":1249,"imageIndex":1},{"imageOffset":48386,"symbol":"std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&)","symbolLocation":18,"imageIndex":2},{"imageOffset":6470518,"symbol":"ReferenceCore::TaskQueue::threadProc()","symbolLocation":134,"imageIndex":3},{"imageOffset":6474190,"imageIndex":3},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140909,"frames":[{"imageOffset":25422,"symbol":"kevent","symbolLocation":10,"imageIndex":0},{"imageOffset":6064428,"symbol":"ReferenceCore::KQueue::run()","symbolLocation":3084,"imageIndex":3},{"imageOffset":6075166,"imageIndex":3},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140917,"name":"AnalyticsService::StoreUndeliveredEventsRoutine","frames":[{"imageOffset":25422,"symbol":"kevent","symbolLocation":10,"imageIndex":0},{"imageOffset":5905665,"imageIndex":3},{"imageOffset":6500824,"symbol":"Sonarworks::Analytics::AnalyticsService::StoreUndeliveredEventsRoutine(Sonarworks::CAutoResetEvent&, Sonarworks::CManualResetEvent&)","symbolLocation":136,"imageIndex":3},{"imageOffset":6594926,"symbol":"Sonarworks::Posix::CThread<Sonarworks::Analytics::AnalyticsService>::ThreadProcedure(void*)","symbolLocation":126,"imageIndex":3},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140918,"name":"AnalyticsService::DispatchAnalyticsEventsRoutine","frames":[{"imageOffset":25422,"symbol":"kevent","symbolLocation":10,"imageIndex":0},{"imageOffset":5905665,"imageIndex":3},{"imageOffset":6550558,"symbol":"Sonarworks::Analytics::AnalyticsService::DispatchAnalyticsEventsRoutine(Sonarworks::CAutoResetEvent&, Sonarworks::CManualResetEvent&)","symbolLocation":206,"imageIndex":3},{"imageOffset":6594926,"symbol":"Sonarworks::Posix::CThread<Sonarworks::Analytics::AnalyticsService>::ThreadProcedure(void*)","symbolLocation":126,"imageIndex":3},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140919,"frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27247,"symbol":"_pthread_cond_wait","symbolLocation":1249,"imageIndex":1},{"imageOffset":48531,"symbol":"std::__1::condition_variable::__do_timed_wait(std::__1::unique_lock<std::__1::mutex>&, std::__1::chrono::time_point<std::__1::chrono::system_clock, std::__1::chrono::duration<long long, std::__1::ratio<1l, 1000000000l> > >)","symbolLocation":93,"imageIndex":2},{"imageOffset":1293435,"imageIndex":3},{"imageOffset":5649189,"imageIndex":3},{"imageOffset":5664354,"imageIndex":3},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140931,"frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27247,"symbol":"_pthread_cond_wait","symbolLocation":1249,"imageIndex":1},{"imageOffset":48386,"symbol":"std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&)","symbolLocation":18,"imageIndex":2},{"imageOffset":6847581,"symbol":"Sonarworks::ThreadPool::loop()","symbolLocation":125,"imageIndex":3},{"imageOffset":6848398,"imageIndex":3},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140932,"frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27247,"symbol":"_pthread_cond_wait","symbolLocation":1249,"imageIndex":1},{"imageOffset":48386,"symbol":"std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&)","symbolLocation":18,"imageIndex":2},{"imageOffset":6847581,"symbol":"Sonarworks::ThreadPool::loop()","symbolLocation":125,"imageIndex":3},{"imageOffset":6848398,"imageIndex":3},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":140954,"name":"JUCE Timer","frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27247,"symbol":"_pthread_cond_wait","symbolLocation":1249,"imageIndex":1},{"imageOffset":48531,"symbol":"std::__1::condition_variable::__do_timed_wait(std::__1::unique_lock<std::__1::mutex>&, std::__1::chrono::time_point<std::__1::chrono::system_clock, std::__1::chrono::duration<long long, std::__1::ratio<1l, 1000000000l> > >)","symbolLocation":93,"imageIndex":2},{"imageOffset":1293435,"imageIndex":3},{"imageOffset":875910,"imageIndex":3},{"imageOffset":1410991,"imageIndex":3},{"imageOffset":879187,"imageIndex":3},{"imageOffset":1075562,"imageIndex":3},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":141390,"frames":[{"imageOffset":8008,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":1}]},{"id":141395,"frames":[{"imageOffset":8008,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":1}]},{"id":141396,"frames":[{"imageOffset":8008,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":1}]},{"id":142172,"frames":[{"imageOffset":8008,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":1}]},{"id":142510,"frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27247,"symbol":"_pthread_cond_wait","symbolLocation":1249,"imageIndex":1},{"imageOffset":48386,"symbol":"std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&)","symbolLocation":18,"imageIndex":2},{"imageOffset":50593,"symbol":"std::__1::__assoc_sub_state::__sub_wait(std::__1::unique_lock<std::__1::mutex>&)","symbolLocation":45,"imageIndex":2},{"imageOffset":6353088,"imageIndex":3},{"imageOffset":6899005,"symbol":"Sonarworks::DSP::Configuration::ReferenceConfigurationBuilder::CalculatedResponses::buildActualCorrection(unsigned long, unsigned long)","symbolLocation":2605,"imageIndex":3},{"imageOffset":6911755,"symbol":"Sonarworks::DSP::Configuration::ReferenceConfigurationBuilder::buildPhaseAndActualCorrection(Sonarworks::DSP::Configuration::Configuration&, unsigned long, unsigned long, std::__1::vector<AFResponse, std::__1::allocator<AFResponse> >&, std::__1::vector<Sonarworks::DSP::Processor::AfrCorrectorConfiguration, std::__1::allocator<Sonarworks::DSP::Processor::AfrCorrectorConfiguration> >&) const","symbolLocation":235,"imageIndex":3},{"imageOffset":4224939,"imageIndex":3},{"imageOffset":4223068,"imageIndex":3},{"imageOffset":4278372,"imageIndex":3},{"imageOffset":6476330,"symbol":"ReferenceCore::Threading::EventQueue::threadProc()","symbolLocation":490,"imageIndex":3},{"imageOffset":6480398,"imageIndex":3},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":142511,"frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27247,"symbol":"_pthread_cond_wait","symbolLocation":1249,"imageIndex":1},{"imageOffset":48386,"symbol":"std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&)","symbolLocation":18,"imageIndex":2},{"imageOffset":6470518,"symbol":"ReferenceCore::TaskQueue::threadProc()","symbolLocation":134,"imageIndex":3},{"imageOffset":6474190,"imageIndex":3},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":142512,"frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27247,"symbol":"_pthread_cond_wait","symbolLocation":1249,"imageIndex":1},{"imageOffset":48386,"symbol":"std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&)","symbolLocation":18,"imageIndex":2},{"imageOffset":6470518,"symbol":"ReferenceCore::TaskQueue::threadProc()","symbolLocation":134,"imageIndex":3},{"imageOffset":6474190,"imageIndex":3},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":142513,"frames":[{"imageOffset":25422,"symbol":"kevent","symbolLocation":10,"imageIndex":0},{"imageOffset":6064428,"symbol":"ReferenceCore::KQueue::run()","symbolLocation":3084,"imageIndex":3},{"imageOffset":6075166,"imageIndex":3},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":142517,"name":"AnalyticsService::StoreUndeliveredEventsRoutine","frames":[{"imageOffset":25422,"symbol":"kevent","symbolLocation":10,"imageIndex":0},{"imageOffset":5905665,"imageIndex":3},{"imageOffset":6500824,"symbol":"Sonarworks::Analytics::AnalyticsService::StoreUndeliveredEventsRoutine(Sonarworks::CAutoResetEvent&, Sonarworks::CManualResetEvent&)","symbolLocation":136,"imageIndex":3},{"imageOffset":6594926,"symbol":"Sonarworks::Posix::CThread<Sonarworks::Analytics::AnalyticsService>::ThreadProcedure(void*)","symbolLocation":126,"imageIndex":3},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":142518,"name":"AnalyticsService::DispatchAnalyticsEventsRoutine","frames":[{"imageOffset":40282,"symbol":"__select","symbolLocation":10,"imageIndex":0},{"imageOffset":199887,"symbol":"Curl_poll","symbolLocation":575,"imageIndex":15},{"imageOffset":176500,"symbol":"multi_wait","symbolLocation":759,"imageIndex":15},{"imageOffset":176879,"symbol":"curl_multi_poll","symbolLocation":26,"imageIndex":15},{"imageOffset":140371,"symbol":"curl_easy_perform","symbolLocation":285,"imageIndex":15},{"imageOffset":7007550,"imageIndex":3},{"imageOffset":6557980,"symbol":"Sonarworks::Analytics::AnalyticsService::SendEvents(Sonarworks::Analytics::AnalyticsService::EventBatch const&)","symbolLocation":3132,"imageIndex":3},{"imageOffset":6562099,"imageIndex":3},{"imageOffset":6550577,"symbol":"Sonarworks::Analytics::AnalyticsService::DispatchAnalyticsEventsRoutine(Sonarworks::CAutoResetEvent&, Sonarworks::CManualResetEvent&)","symbolLocation":225,"imageIndex":3},{"imageOffset":6594926,"symbol":"Sonarworks::Posix::CThread<Sonarworks::Analytics::AnalyticsService>::ThreadProcedure(void*)","symbolLocation":126,"imageIndex":3},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":142519,"frames":[{"imageOffset":17386,"symbol":"__psynch_cvwait","symbolLocation":10,"imageIndex":0},{"imageOffset":27247,"symbol":"_pthread_cond_wait","symbolLocation":1249,"imageIndex":1},{"imageOffset":48531,"symbol":"std::__1::condition_variable::__do_timed_wait(std::__1::unique_lock<std::__1::mutex>&, std::__1::chrono::time_point<std::__1::chrono::system_clock, std::__1::chrono::duration<long long, std::__1::ratio<1l, 1000000000l> > >)","symbolLocation":93,"imageIndex":2},{"imageOffset":1293435,"imageIndex":3},{"imageOffset":5649189,"imageIndex":3},{"imageOffset":5664354,"imageIndex":3},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":142520,"frames":[{"imageOffset":25422,"symbol":"kevent","symbolLocation":10,"imageIndex":0},{"imageOffset":41710,"symbol":"_mdns_search_ex","symbolLocation":1217,"imageIndex":16},{"imageOffset":52252,"symbol":"mdns_addrinfo","symbolLocation":483,"imageIndex":16},{"imageOffset":51684,"symbol":"search_addrinfo","symbolLocation":164,"imageIndex":16},{"imageOffset":22105,"symbol":"si_addrinfo","symbolLocation":1811,"imageIndex":16},{"imageOffset":20140,"symbol":"getaddrinfo","symbolLocation":176,"imageIndex":16},{"imageOffset":213015,"symbol":"Curl_getaddrinfo_ex","symbolLocation":36,"imageIndex":15},{"imageOffset":274269,"symbol":"getaddrinfo_thread","symbolLocation":83,"imageIndex":15},{"imageOffset":247768,"symbol":"curl_thread_create_thunk","symbolLocation":29,"imageIndex":15},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"triggered":true,"id":142522,"instructionState":{"instructionStream":{"bytes":[72,255,198,72,133,210,76,139,109,160,15,132,202,1,0,0,72,137,247,72,131,231,254,72,247,223,49,210,102,15,40,5,22,121,38,0,102,15,31,68,0,0,102,15,16,140,213,16,255,251,255,102,15,16,148,213,32,255,251,255,102,15,89,200,102,15,89,208,102,15,90,201,102,15,90,210,102,15,19,12,144,102,15,19,84,144,8,102,15,16,140,213,48,255,251,255,102,15,16,148,213,64,255,251,255,102,15,89,200,102,15,89,208,102,15,90,201,102,15,90,210,102,15,19,76,144,16,102,15,19,84,144,24,72,131,194,8,72,131,199,2,117,155,64,246,198,1,116,53,102,15,16,132,213,16,255,251,255,102,15,16,140,213,32,255,251,255,102,15,40,21,139,120,38,0,102,15,89,194,102,15,89,202,102,15,90,192,102,15,90,201,102],"offset":96}},"threadState":{"r13":{"value":0},"rax":{"value":140541927989248},"rflags":{"value":66178},"cpu":{"value":0},"r14":{"value":140541927313408},"rsi":{"value":8707},"r8":{"value":1},"cr2":{"value":123145431285760},"rdx":{"value":33856},"r10":{"value":128},"r9":{"value":13808464859202914767},"r15":{"value":34829},"rbx":{"value":140541927313408},"trap":{"value":14,"description":"(no mapping for user data read)"},"err":{"value":4},"r11":{"value":63},"rip":{"value":5272678294,"matchesCrashFrame":1},"rbp":{"value":123145431277248},"rsp":{"value":123145431014864},"r12":{"value":140541927313408},"rcx":{"value":34828},"flavor":"x86_THREAD_STATE","rdi":{"value":18446744073709551374}},"frames":[{"imageOffset":6713238,"symbol":"FIRCoefficients::FIRCoefficients(AFResponse const&, unsigned long, unsigned long, int)","symbolLocation":1190,"imageIndex":3},{"imageOffset":6918170,"imageIndex":3},{"imageOffset":6917872,"imageIndex":3},{"imageOffset":6918510,"imageIndex":3},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]},{"id":142523,"frames":[{"imageOffset":6712320,"symbol":"FIRCoefficients::FIRCoefficients(AFResponse const&, unsigned long, unsigned long, int)","symbolLocation":272,"imageIndex":3},{"imageOffset":6918170,"imageIndex":3},{"imageOffset":6917872,"imageIndex":3},{"imageOffset":6918510,"imageIndex":3},{"imageOffset":25825,"symbol":"_pthread_start","symbolLocation":125,"imageIndex":1},{"imageOffset":8043,"symbol":"thread_start","symbolLocation":15,"imageIndex":1}]}],
+  "usedImages" : [
+  {
+    "source" : "P",
+    "arch" : "x86_64",
+    "base" : 140703604277248,
+    "size" : 229376,
+    "uuid" : "8cc28466-fd2f-3c80-9834-9525b7beac19",
+    "path" : "\/usr\/lib\/system\/libsystem_kernel.dylib",
+    "name" : "libsystem_kernel.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "x86_64",
+    "base" : 140703604506624,
+    "size" : 49152,
+    "uuid" : "b5454e27-e8c7-3fdb-b77f-714f1e82e70b",
+    "path" : "\/usr\/lib\/system\/libsystem_pthread.dylib",
+    "name" : "libsystem_pthread.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "x86_64",
+    "base" : 140703603822592,
+    "size" : 364544,
+    "uuid" : "e67ac91f-f1dc-30ec-84f3-83f5bdad3434",
+    "path" : "\/usr\/lib\/libc++.1.dylib",
+    "name" : "libc++.1.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "x86_64",
+    "base" : 5265965056,
+    "CFBundleShortVersionString" : "5.5.0",
+    "CFBundleIdentifier" : "com.sonarworks.soundid.reference.plugin",
+    "size" : 14581760,
+    "uuid" : "771c2034-67cd-3ad0-a9ee-a82760f73b3b",
+    "path" : "\/Library\/Audio\/Plug-Ins\/Components\/SoundID Reference AU Plugin.component\/Contents\/MacOS\/SoundID Reference Plugin",
+    "name" : "SoundID Reference Plugin",
+    "CFBundleVersion" : "5.5.0"
+  },
+  {
+    "source" : "P",
+    "arch" : "x86_64",
+    "base" : 140703626133504,
+    "CFBundleShortVersionString" : "1.0",
+    "CFBundleIdentifier" : "com.apple.audio.AudioToolboxCore",
+    "size" : 2691072,
+    "uuid" : "d935453a-9986-311a-aa57-cd7584cbbcf9",
+    "path" : "\/System\/Library\/PrivateFrameworks\/AudioToolboxCore.framework\/Versions\/A\/AudioToolboxCore",
+    "name" : "AudioToolboxCore"
+  },
+  {
+    "source" : "P",
+    "arch" : "x86_64",
+    "base" : 4429914112,
+    "CFBundleShortVersionString" : "6.69.0_38d5c94u",
+    "CFBundleIdentifier" : "com.cockos.reaper",
+    "size" : 9633792,
+    "uuid" : "5e3c09a5-53a6-392c-a25c-7edfe8158518",
+    "path" : "\/Applications\/REAPER.app\/Contents\/MacOS\/REAPER",
+    "name" : "REAPER",
+    "CFBundleVersion" : "6.69.0_38d5c94u"
+  },
+  {
+    "source" : "P",
+    "arch" : "x86_64",
+    "base" : 140703649357824,
+    "CFBundleShortVersionString" : "6.9",
+    "CFBundleIdentifier" : "com.apple.AppKit",
+    "size" : 15269888,
+    "uuid" : "06015263-62ac-3b08-a298-dc835c18452a",
+    "path" : "\/System\/Library\/Frameworks\/AppKit.framework\/Versions\/C\/AppKit",
+    "name" : "AppKit",
+    "CFBundleVersion" : "2113.60.148"
+  },
+  {
+    "source" : "P",
+    "arch" : "x86_64",
+    "base" : 4698787840,
+    "size" : 442368,
+    "uuid" : "71febccd-d9dc-3599-9971-2b3407c588a8",
+    "path" : "\/usr\/lib\/dyld",
+    "name" : "dyld"
+  },
+  {
+    "source" : "P",
+    "arch" : "x86_64h",
+    "base" : 140703604822016,
+    "CFBundleShortVersionString" : "6.9",
+    "CFBundleIdentifier" : "com.apple.CoreFoundation",
+    "size" : 5255168,
+    "uuid" : "93c48919-68af-367e-9a67-db4159bc962c",
+    "path" : "\/System\/Library\/Frameworks\/CoreFoundation.framework\/Versions\/A\/CoreFoundation",
+    "name" : "CoreFoundation",
+    "CFBundleVersion" : "1866"
+  },
+  {
+    "source" : "P",
+    "arch" : "x86_64",
+    "base" : 140703987388416,
+    "CFBundleShortVersionString" : "2.0",
+    "CFBundleIdentifier" : "com.apple.audio.midi.CoreMIDI",
+    "size" : 446464,
+    "uuid" : "c517ae1a-8f49-3ad3-bdad-502c51ad2bf3",
+    "path" : "\/System\/Library\/Frameworks\/CoreMIDI.framework\/Versions\/A\/CoreMIDI",
+    "name" : "CoreMIDI",
+    "CFBundleVersion" : "88"
+  },
+  {
+    "source" : "P",
+    "arch" : "x86_64",
+    "base" : 4555378688,
+    "size" : 933888,
+    "uuid" : "e510ff75-1461-30fb-9cc0-d8c465056f0d",
+    "path" : "\/Applications\/REAPER.app\/Contents\/Plugins\/reaper_video.dylib",
+    "name" : "reaper_video.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "x86_64",
+    "base" : 140703603261440,
+    "size" : 561152,
+    "uuid" : "e42e9d7a-03b4-340b-b61e-dcd45fd4acc0",
+    "path" : "\/usr\/lib\/system\/libsystem_c.dylib",
+    "name" : "libsystem_c.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "x86_64",
+    "base" : 140703750176768,
+    "CFBundleShortVersionString" : "1.0",
+    "CFBundleIdentifier" : "com.apple.audio.caulk",
+    "size" : 139264,
+    "uuid" : "8e7b3d95-1d47-3f17-9512-c5fcc30792c2",
+    "path" : "\/System\/Library\/PrivateFrameworks\/caulk.framework\/Versions\/A\/caulk",
+    "name" : "caulk"
+  },
+  {
+    "source" : "P",
+    "arch" : "x86_64",
+    "base" : 140703630839808,
+    "CFBundleShortVersionString" : "5.0",
+    "CFBundleIdentifier" : "com.apple.audio.CoreAudio",
+    "size" : 7561216,
+    "uuid" : "9be547d0-0af1-3470-afde-2ac4cd34441e",
+    "path" : "\/System\/Library\/Frameworks\/CoreAudio.framework\/Versions\/A\/CoreAudio",
+    "name" : "CoreAudio",
+    "CFBundleVersion" : "5.0"
+  },
+  {
+    "source" : "P",
+    "arch" : "x86_64",
+    "base" : 4774309888,
+    "CFBundleShortVersionString" : "1.8.7 build 145",
+    "CFBundleIdentifier" : "se.propellerheads.rewire.library",
+    "size" : 442368,
+    "uuid" : "b284579f-660f-3550-8327-64dbedc9a218",
+    "path" : "\/Library\/Application Support\/Propellerhead Software\/*\/ReWire.bundle\/Contents\/MacOS\/ReWire",
+    "name" : "ReWire",
+    "CFBundleVersion" : "1.8.7"
+  },
+  {
+    "source" : "P",
+    "arch" : "x86_64",
+    "base" : 140703949127680,
+    "size" : 450560,
+    "uuid" : "756c2541-68b2-344c-ade7-df50840d63e0",
+    "path" : "\/usr\/lib\/libcurl.4.dylib",
+    "name" : "libcurl.4.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "x86_64",
+    "base" : 140703604645888,
+    "size" : 176128,
+    "uuid" : "6d4b0da7-8efc-3e6d-b984-f49260c3c194",
+    "path" : "\/usr\/lib\/system\/libsystem_info.dylib",
+    "name" : "libsystem_info.dylib"
+  },
+  {
+    "size" : 0,
+    "source" : "A",
+    "base" : 0,
+    "uuid" : "00000000-0000-0000-0000-000000000000"
+  }
+],
+  "sharedCache" : {
+  "base" : 140703601250304,
+  "size" : 19331678208,
+  "uuid" : "73669942-bd8a-3e40-951f-7fbe07b51cb8"
+},
+  "vmSummary" : "ReadOnly portion of Libraries: Total=1.2G resident=0K(0%) swapped_out_or_unallocated=1.2G(100%)\nWritable regions: Total=3.5G written=0K(0%) resident=0K(0%) swapped_out=0K(0%) unallocated=3.5G(100%)\n\n                                VIRTUAL   REGION \nREGION TYPE                        SIZE    COUNT (non-coalesced) \n===========                     =======  ======= \nAccelerate framework              1408K       11 \nActivity Tracing                   256K        1 \nCG backing stores                 3600K        8 \nCG image                          2816K       42 \nColorSync                          232K       28 \nCoreAnimation                    300.6M      187 \nCoreGraphics                        16K        3 \nCoreImage                           12K        3 \nCoreUI image data                 5072K       38 \nFoundation                          44K        2 \nImage IO                            28K        7 \nKernel Alloc Once                    8K        1 \nMALLOC                             2.9G     3999 \nMALLOC guard page                   48K       11 \nMALLOC_LARGE (reserved)           49.6M        5         reserved VM address space (unallocated)\nMALLOC_NANO (reserved)           256.0M        1         reserved VM address space (unallocated)\nObjC additional data                15K        1 \nSQLite page cache                  192K        3 \nSTACK GUARD                       56.2M       64 \nStack                             40.0M       65 \nVM_ALLOCATE                       40.1M      686 \nVM_ALLOCATE (reserved)             456K        4         reserved VM address space (unallocated)\n__CTF                               756        1 \n__DATA                            42.9M      593 \n__DATA_CONST                      30.2M      336 \n__DATA_DIRTY                      1600K      209 \n__FONT_DATA                          4K        1 \n__LINKEDIT                       655.0M       78 \n__TEXT                           568.3M      593 \n__UNICODE                          592K        1 \ndyld private memory               1024K        1 \nlibnetwork                        1024K        8 \nmapped file                      199.7M       44 \nshared memory                      792K       19 \n===========                     =======  ======= \nTOTAL                              5.1G     7054 \nTOTAL, minus reserved VM space     4.8G     7054 \n",
+  "legacyInfo" : {
+  "threadTriggered" : {
+
+  }
+},
+  "trialInfo" : {
+  "rollouts" : [
+    {
+      "rolloutId" : "6112dda2fc54bc3389840642",
+      "factorPackIds" : {
+        "SIRI_DICTATION_ASSETS" : "631730a28520965d1cba0681"
+      },
+      "deploymentId" : 240000145
+    },
+    {
+      "rolloutId" : "63582c5f8a53461413999550",
+      "factorPackIds" : {
+
+      },
+      "deploymentId" : 240000001
+    }
+  ],
+  "experiments" : [
+
+  ]
+}
+}
+
+Model: iMacPro1,1, BootROM 1916.0.3.0.0, 6 processors, 6-Core Intel Core i7, 3,7 GHz, 24 GB, SMC 
+Graphics: AMD Radeon RX 480, AMD Radeon RX 480, PCIe, 8 GB
+Display: 55UHD_LCD_TV, 3840 x 2160 (2160p/4K UHD 1 - Ultra High Definition), Main, MirrorOff, Online
+Display: SAMSUNG, 1920 x 1080 (1080p FHD - Full High Definition), MirrorOff, Online
+Memory Module: BANK 0/ChannelA-DIMM0, 4 GB, DDR4, 2667 MHz, 859B, BLE4G4D26AFEA.8FADG
+Memory Module: BANK 1/ChannelA-DIMM1, 8 GB, DDR4, 2667 MHz, 859B, BLE8G4D26AFEA.16FAD
+Memory Module: BANK 2/ChannelB-DIMM0, 4 GB, DDR4, 2667 MHz, 859B, BLE4G4D26AFEA.8FADG
+Memory Module: BANK 3/ChannelB-DIMM1, 8 GB, DDR4, 2667 MHz, 859B, BLE8G4D26AFEA.16FAD
+Bluetooth: Version (null), 0 services, 0 devices, 0 incoming serial ports
+Network Service: Ethernet, Ethernet, en0
+Serial ATA Device: Samsung SSD 860 EVO 1TB, 1 TB
+Serial ATA Device: Samsung SSD 860 EVO 1TB, 1 TB
+Serial ATA Device: Samsung SSD 860 EVO 1TB, 1 TB
+Serial ATA Device: Samsung SSD 860 EVO 1TB, 1 TB
+USB Device: USB30Bus
+USB Device: Gaming Mouse G502
+USB Device: miscellaneous_device
+USB Device: hub_device
+USB Device: Iomega HDD
+USB Device: Keyboard Hub
+USB Device: USB Receiver
+USB Device: Apple Keyboard
+USB Device: Disk 2.0
+Thunderbolt Bus: 
